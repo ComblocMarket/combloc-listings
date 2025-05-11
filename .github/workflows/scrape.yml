@@ -3,7 +3,7 @@ name: Scrape Listings
 on:
   schedule:
     - cron: "0 * * * *" # every hour
-  workflow_dispatch:
+  workflow_dispatch:     # allows manual triggering
 
 jobs:
   build:
@@ -25,9 +25,9 @@ jobs:
         run: node scrape.js
 
       - name: Commit listings.json
-  run: |
-    git config user.name "Combloc Bot"
-    git config user.email "bot@comblocmarket.com"
-    git add listings.json
-    git commit -m "Update listings.json"
-    git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:main
+        run: |
+          git config user.name "Combloc Bot"
+          git config user.email "bot@comblocmarket.com"
+          git add listings.json
+          git commit -m "Update listings.json" || echo "Nothing to commit"
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:main
