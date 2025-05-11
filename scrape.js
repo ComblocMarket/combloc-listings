@@ -2,7 +2,10 @@ const puppeteer = require("puppeteer");
 const fs = require("fs-extra");
 
 (async () => {
-  const browser = await puppeteer.launch({ headless: "new" });
+  const browser = await puppeteer.launch({
+  headless: "new",
+  args: ["--no-sandbox", "--disable-setuid-sandbox"]
+});
   const page = await browser.newPage();
   await page.goto("https://comblocmarket.com/classifieds1/categories/combloc-market.1/", {
     waitUntil: "networkidle2",
