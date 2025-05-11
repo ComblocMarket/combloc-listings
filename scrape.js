@@ -29,4 +29,6 @@ const fs = require("fs-extra");
     return output;
   });
 
-  await fs
+  await fs.writeJson("listings.json", listings, { spaces: 2 });
+  await browser.close();
+})();
