@@ -1,9 +1,9 @@
 name: Scrape Listings
-
-on:
-  schedule:
-    - cron: "0 3 * * *" # once daily at 3:00 AM (UTC)
-  workflow_dispatch:     # allows manual triggering
+#clear this line and delete the # to resume
+#on:
+#  schedule:
+#    - cron: "0 3 * * *" # once daily at 3:00 AM (UTC)
+#  workflow_dispatch:     # allows manual triggering
 
 jobs:
   build:
